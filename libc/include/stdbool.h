@@ -1,5 +1,5 @@
-#ifndef HELIOS_STDBOOL_H
-#define HELIOS_STDBOOL_H 1
+#ifndef _HELIOS_STDBOOL_H
+#define _HELIOS_STDBOOL_H 1
 
 #define bool _Bool
 #define true 1

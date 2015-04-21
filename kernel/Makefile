@@ -13,7 +13,7 @@ BOOTDIR?=$(EXEC_PREFIX)/boot
 INCLUDEDIR?=$(PREFIX)/include
 
 CFLAGS:=$(CFLAGS) -ffreestanding -fbuiltin -Wall -Wextra
-CPPFLAGS:=$(CPPFLAGS) -D__is_myos_kernel -Iinclude
+CPPFLAGS:=$(CPPFLAGS) -D__is_helios_kernel -Iinclude
 LDFLAGS:=$(LDFLAGS)
 LIBS:=$(LIBS) -nostdlib -lk -lgcc
 
@@ -24,7 +24,7 @@ include $(ARCHDIR)/make.config
 CFLAGS:=$(CFLAGS) $(KERNEL_ARCH_CFLAGS)
 CPFLAGS:=$(CPPFLAGS) $(KERNEL_ARCH_CPPFLAGS)
 LDFLAGS:=$(LDFLAGS) $(KERNEL_ARCH_LDFLAGS)
-LIBS:=$(LIBS) $(KERNEL_ARCH_LIBS)
+LIBS:=$(LIBS) $(KERNEL_ARCH_LIBgS)
 
 OBJS:=\
 $(KERNEL_ARCH_OBJS) \

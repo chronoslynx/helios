@@ -16,12 +16,12 @@ void kernel_main(void)
 {
     printf("Hello, kernel World!\n");
     printf("Data sizes in bytes: \n");
-    printf("- sizeof(char) = %d\n", sizeof(char));
-    printf("- sizeof(short) = %d\n", sizeof(short));
-    printf("- sizeof(int) = %d\n", sizeof(int));
-    printf("- sizeof(long) = %d\n", sizeof(long));
-    printf("- sizeof(long long) = %d\n", sizeof(long long));
-    printf("- sizeof(double) = %d\n", sizeof(double));
-    printf("- sizeof(long double) = %d\n", sizeof(long double));
+    printf("- sizeof(char) = %z\n", sizeof(char));
+    printf("- sizeof(short) = %z\n", sizeof(short));
+    printf("- sizeof(int) = %z\n", sizeof(int));
+    printf("- sizeof(long) = %z\n", sizeof(long));
+    printf("- sizeof(long long) = %s\n", sizeof(long long));
+    printf("- sizeof(double) = %z\n", sizeof(double));
+    printf("- sizeof(long double) = %z\n", sizeof(long double));
     /*printf("end of kernel is at %du", (int)end_kernel);*/
 }

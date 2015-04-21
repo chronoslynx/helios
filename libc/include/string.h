@@ -1,5 +1,5 @@
-#ifndef _STRING_H
-#define _STRING_H 1
+#ifndef _HELIOS__STRING_H
+#define _HELIOS_STRING_H 1
 
 #include <sys/cdefs.h>
 
