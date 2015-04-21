@@ -92,18 +92,27 @@ int printf(const char* restrict format, ...)
         }
         else if (*format == 'd')
         {
-            if (*format++ == 'u')
+            format++;
+            if (*format == 'u')
             { /* unsigned */
-                unsigned int n = (int) va_arg(parameters, unsigned int);
-                char *c = uint_to_string(num_buffer, n, PRINTF_NUMBUF_SZ);
-                print(c, sizeof(c));
+                format++;
+                unsigned int n = (unsigned int) va_arg(parameters, unsigned int);
+                const char *c = uint_to_string(num_buffer, n, PRINTF_NUMBUF_SZ);
+                print(c, strlen(c));
             }
             else
             {
                 int n = (int) va_arg(parameters, int);
-                char *c = int_to_string(num_buffer, n, PRINTF_NUMBUF_SZ);
-                print(c, sizeof(c));
+                const char *c = int_to_string(num_buffer, n, PRINTF_NUMBUF_SZ);
+                print(c, strlen(c));
             }
+        }
+        else if (*format == 'z')
+        {
+            format++;
+            size_t s = (size_t) va_arg(parameters, size_t);
+            const char *c = uint_to_string(num_buffer, s, PRINTF_NUMBUF_SZ);
+            print(c, strlen(c));
         }
         else if ( *format == 's' )
         {

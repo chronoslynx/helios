@@ -9,7 +9,7 @@ extern uint32_t end_kernel;
 
 void kernel_early(void)
 {
-	terminal_initialize();
+    terminal_initialize();
 }
 
 void kernel_main(void)
@@ -23,5 +23,6 @@ void kernel_main(void)
     printf("- sizeof(long long) = %s\n", sizeof(long long));
     printf("- sizeof(double) = %z\n", sizeof(double));
     printf("- sizeof(long double) = %z\n", sizeof(long double));
+    terminal_scroll();
     /*printf("end of kernel is at %du", (int)end_kernel);*/
 }
