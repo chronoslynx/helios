@@ -18,7 +18,7 @@ static char *int_to_string(char *c, int n, int len)
 {
     int idx = len;
     int neg = n < 0;
-    c[--idx] = 0; /* NULL terminate */
+    c[--idx] = 0; /* Null terminate */
     while (n >= 10)
     {
         int dig = n % 10;

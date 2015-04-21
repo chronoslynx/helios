@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>
+#include <assert.h>
 
 #include <kernel/tty.h>
 
@@ -23,6 +24,4 @@ void kernel_main(void)
     printf("- sizeof(long long) = %s\n", sizeof(long long));
     printf("- sizeof(double) = %z\n", sizeof(double));
     printf("- sizeof(long double) = %z\n", sizeof(long double));
-    terminal_scroll();
-    /*printf("end of kernel is at %du", (int)end_kernel);*/
 }

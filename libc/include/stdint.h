@@ -3,10 +3,8 @@
 
 #include <sys/cdefs.h>
 #include <bits/wordsize.h>
+__BEGIN_CDECLS
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 #   define PRI32 "d"
 #   define PRIu32 "du"
 #   define PRI64 "ll"
@@ -24,7 +22,6 @@ extern "C" {
     /* These are unknown right now. Kernel doesn't support
     * 64-bit architectures at the moment. */
 #endif
-#ifdef __cplusplus
-}
-#endif
+
+__END_CDECLS
 #endif

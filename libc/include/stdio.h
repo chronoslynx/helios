@@ -2,17 +2,11 @@
 #define _HELIOS_STDIO_H 1
 
 #include <sys/cdefs.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+__BEGIN_CDECLS
 
 int printf(const char* __restrict, ...);
 int putchar(int);
 int puts(const char*);
 
-#ifdef __cplusplus
-}
-#endif
-
+__END_CDECLS
 #endif
