@@ -5,7 +5,7 @@
 
 __BEGIN_CDECLS
 __attribute__((__noreturn__))
-void assert_fail(const char* cond, const char* file, const char* line, const char* func);
+void assert_fail(const char* cond, const char* file, const int line, const char* func);
 __END_CDECLS
 
 #if defined(NDEBUG)

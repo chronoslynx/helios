@@ -24,4 +24,5 @@ void kernel_main(void)
     printf("- sizeof(long long) = %s\n", sizeof(long long));
     printf("- sizeof(double) = %z\n", sizeof(double));
     printf("- sizeof(long double) = %z\n", sizeof(long double));
+    assert(10 < 4);
 }
