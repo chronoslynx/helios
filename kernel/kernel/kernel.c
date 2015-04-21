@@ -14,6 +14,14 @@ void kernel_early(void)
 
 void kernel_main(void)
 {
-	printf("Hello, kernel World!\n");
-    printf("end of kernel is at %d", end_kernel);
+    printf("Hello, kernel World!\n");
+    printf("Data sizes in bytes: \n");
+    printf("- sizeof(char) = %d\n", sizeof(char));
+    printf("- sizeof(short) = %d\n", sizeof(short));
+    printf("- sizeof(int) = %d\n", sizeof(int));
+    printf("- sizeof(long) = %d\n", sizeof(long));
+    printf("- sizeof(long long) = %d\n", sizeof(long long));
+    printf("- sizeof(double) = %d\n", sizeof(double));
+    printf("- sizeof(long double) = %d\n", sizeof(long double));
+    /*printf("end of kernel is at %du", (int)end_kernel);*/
 }
