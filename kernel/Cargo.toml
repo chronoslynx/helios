@@ -1,0 +1,4 @@
+[package]
+name = "kernel"
+version = "0.1.0"
+authors = ["Tim Swihart <Timothy.Swihart@gtri.gatech.edu>"]

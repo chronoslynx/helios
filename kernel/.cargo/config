@@ -1,0 +1,5 @@
+# Cross-compilation
+#i386-intel-linux
+[target.i686-unknown-linux-gnu]
+linker = "i386-gcc"
+
