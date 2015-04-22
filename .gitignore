@@ -1,3 +1,6 @@
 *.iso
 isodir
 sysroot
+libcore
+kernel/target
+kernel/Cargo.lock

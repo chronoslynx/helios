@@ -37,7 +37,7 @@ pub mod arch;
 
 
 // Prelude
-pub use core::prelude::*;
+use core::prelude::*;
 
 /// Exception handling (panic)
 pub mod unwind;
