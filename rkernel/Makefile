@@ -19,8 +19,8 @@ endif
 # Object directory
 OBJDIR := .obj/$(ARCH)/
 
-LINKSCRIPT := libkern/arch/$(ARCH)/link.ld
-TARGETSPEC := libkern/arch/$(ARCH)/target.json
+LINKSCRIPT := arch/$(ARCH)/link.ld
+TARGETSPEC := arch/$(ARCH)/target.json
 # Compiler Options
 LINKFLAGS := -T $(LINKSCRIPT)
 LINKFLAGS += -Map $(OBJDIR)map.txt
@@ -35,8 +35,7 @@ endif
 
 # Objects
 LIBCORE := $(OBJDIR)libcore.rlib
-LIBKERN := $(OBJDIR)libkern.a
-OBJS := start.o kernel.o libcore.rlib libkern.a
+OBJS := start.o kernel.o libcore.rlib
 OBJS := $(OBJS:%=$(OBJDIR)%)
 BIN := ../kernel.$(ARCH).bin
 
@@ -50,7 +49,7 @@ clean:
 	$(RM) -rf $(BIN) $(BIN).dsm $(OBJDIR)
 
 # Final link command
-$(BIN): $(OBJS) libkern/arch/$(ARCH)/link.ld
+$(BIN): $(OBJS) arch/$(ARCH)/link.ld
 	$(LD) -o $@ $(LINKFLAGS) $(OBJS)
 	$(OBJDUMP) -S $@ > $@.dsm
 ifeq ($(ARCH),amd64)
@@ -63,20 +62,16 @@ $(OBJDIR)libcore.rlib: ../libcore/lib.rs Makefile $(TARGETSPEC)
 	@mkdir -p $(dir $@)
 	$(RUSTC) $(RUSTFLAGS) -o $@ --crate-type=lib --emit=link,dep-info $<
 
-# Compile rust kernel library
-$(OBJDIR)libkern.a: libkern/lib.rs Makefile $(TARGETSPEC) $(LIBCORE)
-	@mkdir -p $(dir $@)
-	$(RUSTC) $(RUSTFLAGS) -o $@ --crate-type=staticlib --emit=link,dep-info $< --extern core=$(LIBCORE)
 
 # Compile rust kernel object
-$(OBJDIR)kernel.o: main.rs $(LIBCORE) Makefile $(TARGETSPEC) $(LIBKERN)
+$(OBJDIR)kernel.o: main.rs $(LIBCORE) Makefile $(TARGETSPEC)
 	@mkdir -p $(dir $@)
-	$(RUSTC) $(RUSTFLAGS) -o $@ --emit=obj,dep-info $< --extern core=$(LIBCORE) --extern kern=$(LIBKERN)
+	$(RUSTC) $(RUSTFLAGS) -o $@ --emit=obj,dep-info $< --extern core=$(LIBCORE)
 
 # Compile architecture's assembly stub
-$(OBJDIR)start.o: libkern/arch/$(ARCH)/start.S Makefile
+$(OBJDIR)start.o: arch/$(ARCH)/start.S Makefile
 	@mkdir -p $(dir $@)
 	$(AS) $(ASFLAGS) -o $@ $<
 
 # Include dependency files
--include $(OBJDIR)libcore.d $(OBJDIR)kernel.d $(OBJDIR)start.d $(OBJDIR)libkern.d
+-include $(OBJDIR)libcore.d $(OBJDIR)kernel.d $(OBJDIR)start.d

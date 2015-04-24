@@ -13,6 +13,7 @@
 ///
 /// Obtaines a logger instance (locking the log channel) with the current module name passed
 /// then passes the standard format! arguments to it
+#[macro_export]
 macro_rules! klog{
     ( $($arg:tt)* ) => ({
         // Import the Writer trait (required by write!)
